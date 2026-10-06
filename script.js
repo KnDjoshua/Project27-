@@ -962,3 +962,141 @@ document.addEventListener("DOMContentLoaded", () => {
   updateStats();
 
 });
+
+/* =====================================================
+   BIRTHDAY MUSIC SYSTEM
+===================================================== */
+
+const birthdayMusic =
+  document.getElementById("birthdayMusic");
+
+const musicToggle =
+  document.getElementById("musicToggle");
+
+
+birthdayMusic.volume = 0.45;
+
+
+function startBirthdayMusic() {
+
+  birthdayMusic
+    .play()
+    .then(() => {
+
+      musicToggle.textContent =
+        "🔊 MUSIC ON";
+
+      musicToggle.classList.add(
+        "playing"
+      );
+
+    })
+    .catch(() => {
+
+      /*
+        Browser blocked autoplay.
+        Music will start after the visitor
+        interacts with the page.
+      */
+
+      musicToggle.textContent =
+        "🔇 TAP FOR MUSIC";
+
+    });
+
+}
+
+
+/* Try when the page loads */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    setTimeout(() => {
+
+      startBirthdayMusic();
+
+    }, 500);
+
+  }
+);
+
+
+/* Manual music button */
+
+musicToggle.addEventListener(
+  "click",
+  () => {
+
+    if (birthdayMusic.paused) {
+
+      birthdayMusic
+        .play()
+        .then(() => {
+
+          musicToggle.textContent =
+            "🔊 MUSIC ON";
+
+          musicToggle.classList.add(
+            "playing"
+          );
+
+        });
+
+    } else {
+
+      birthdayMusic.pause();
+
+      musicToggle.textContent =
+        "🔇 MUSIC OFF";
+
+      musicToggle.classList.remove(
+        "playing"
+      );
+
+    }
+
+  }
+);
+
+
+/*
+  If autoplay was blocked, start music
+  on the visitor's first meaningful interaction.
+*/
+
+const unlockMusic = () => {
+
+  if (birthdayMusic.paused) {
+
+    birthdayMusic
+      .play()
+      .then(() => {
+
+        musicToggle.textContent =
+          "🔊 MUSIC ON";
+
+        musicToggle.classList.add(
+          "playing"
+        );
+
+      })
+      .catch(() => {});
+
+  }
+
+};
+
+
+document.addEventListener(
+  "click",
+  unlockMusic,
+  { once: true }
+);
+
+document.addEventListener(
+  "keydown",
+  unlockMusic,
+  { once: true }
+);
