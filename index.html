@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>I am KnÐjoshua — Inside My Birthday Universe</title>
+  <title>KnÐ — Birthday Universe</title>
 
   <!-- Futuristic fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,10 @@
 </head>
 
 <body>
+    <audio id="birthdayMusic" src="music/birthday.mp3" loop preload="auto"></audio>
+    <button id="startButton" class="main-button">
+    ENTER THE UNIVERSE
+</button>
 
   <!-- =========================
        BACKGROUND
@@ -85,7 +89,7 @@
 
           <img
             id="profilePhoto"
-            src="5a4f1649-a0b8-4c05-ab1c-aed3d49a15a9.jpg"
+            src="/assets/5a4f1649-a0b8-4c05-ab1c-aed3d49a15a9.jpg.jpeg"
             alt="KnD Joshua"
           >
 
@@ -621,6 +625,246 @@
   🔊 MUSIC
 </button>
 
+
+
+<!-- ================================
+     KnÐ INSTAGRAM CONNECT
+================================ -->
+
+<section class="knd-instagram-section">
+
+    <style>
+        .knd-instagram-section {
+            position: relative;
+            width: 100%;
+            padding: 70px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .knd-instagram-section::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(
+                circle,
+                rgba(255, 0, 170, 0.16),
+                rgba(130, 50, 255, 0.08),
+                transparent 70%
+            );
+            filter: blur(30px);
+            pointer-events: none;
+        }
+
+        .knd-instagram-box {
+            position: relative;
+            max-width: 650px;
+            margin: auto;
+            padding: 45px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow:
+                0 0 40px rgba(157, 78, 221, 0.15),
+                inset 0 0 30px rgba(255, 255, 255, 0.02);
+        }
+
+        .knd-instagram-label {
+            font-family: "Orbitron", sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #bdbdbd;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .knd-instagram-title {
+            font-family: "Audiowide", sans-serif;
+            font-size: clamp(28px, 6vw, 48px);
+            margin: 0 0 12px;
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #ff4ecd,
+                #8f5cff,
+                #42e8ff
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: kndInstagramGlow 3s ease-in-out infinite alternate;
+        }
+
+        .knd-instagram-text {
+            font-family: "Space Grotesk", sans-serif;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            margin-bottom: 28px;
+        }
+
+        .knd-instagram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: white;
+            font-family: "Orbitron", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+
+            background: linear-gradient(
+                135deg,
+                #833ab4,
+                #fd1d1d,
+                #fcb045
+            );
+
+            box-shadow:
+                0 0 20px rgba(253, 29, 29, 0.25),
+                0 0 40px rgba(131, 58, 180, 0.15);
+
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .knd-instagram-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 80%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-25deg);
+            transition: 0.6s ease;
+        }
+
+        .knd-instagram-button:hover::before {
+            left: 140%;
+        }
+
+        .knd-instagram-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow:
+                0 0 30px rgba(253, 29, 29, 0.45),
+                0 0 60px rgba(131, 58, 180, 0.3);
+        }
+
+        .knd-instagram-icon {
+            width: 25px;
+            height: 25px;
+            border: 2px solid white;
+            border-radius: 7px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .knd-instagram-icon::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 2px solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .knd-instagram-icon::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            top: 4px;
+            right: 4px;
+        }
+
+        .knd-instagram-handle {
+            margin-top: 18px;
+            font-family: "Space Grotesk", sans-serif;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 13px;
+        }
+
+        @keyframes kndInstagramGlow {
+            from {
+                filter: drop-shadow(0 0 3px rgba(255, 78, 205, 0.2));
+            }
+
+            to {
+                filter: drop-shadow(0 0 14px rgba(255, 78, 205, 0.5));
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .knd-instagram-section {
+                padding: 45px 15px;
+            }
+
+            .knd-instagram-box {
+                padding: 35px 18px;
+                border-radius: 22px;
+            }
+
+            .knd-instagram-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+
+
+    <div class="knd-instagram-box">
+
+        <div class="knd-instagram-label">
+            CONNECT WITH THE CREATOR
+        </div>
+
+        <h2 class="knd-instagram-title">
+            FOLLOW KnÐ
+        </h2>
+
+        <p class="knd-instagram-text">
+            The birthday universe doesn't end here.
+            Come see what I'm building, creating & living.
+        </p>
+
+        <a
+            href="https://www.instagram.com/kndjoshua/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="knd-instagram-button"
+        >
+
+            <span class="knd-instagram-icon"></span>
+
+            FOLLOW @kn_djoshua ↗
+
+        </a>
+
+        <div class="knd-instagram-handle">
+            INSTAGRAM // @kn_djoshua
+        </div>
+
+    </div>
+
+</section>
+<script src="script.js"></script>
 
 
 </html>
